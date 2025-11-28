@@ -1,0 +1,49 @@
+services:
+  - type: web
+    name: bukuq-api
+    env: docker
+    plan: free
+    dockerfilePath: ./Dockerfile
+    envVars:
+      - key: APP_KEY
+        generateValue: true
+      - key: APP_ENV
+        value: production
+      - key: APP_DEBUG
+        value: false
+      - key: LOG_CHANNEL
+        value: stderr
+      - key: DB_CONNECTION
+        value: mysql
+      - key: DB_HOST
+        fromDatabase:
+          name: bukuq-db
+          property: host
+      - key: DB_PORT
+        fromDatabase:
+          name: bukuq-db
+          property: port
+      - key: DB_DATABASE
+        fromDatabase:
+          name: bukuq-db
+          property: database
+      - key: DB_USERNAME
+        fromDatabase:
+          name: bukuq-db
+          property: user
+      - key: DB_PASSWORD
+        fromDatabase:
+          name: bukuq-db
+          property: password
+      - key: CLOUDINARY_CLOUD_NAME
+        value: dkpanabg7
+      - key: CLOUDINARY_API_KEY
+        value: 763669594289742
+      - key: CLOUDINARY_API_SECRET
+        value: uy42U6UgN0cCFS9xMxPPf5EfSbc
+
+databases:
+  - name: bukuq-db
+    databaseName: bukuq_api
+    user: bukuq_user
+    plan: free

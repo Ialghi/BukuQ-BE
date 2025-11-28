@@ -1,2 +1,10 @@
-/vendor
-/node_modules
+node_modules/
+.git/
+.env
+.env.*
+.vscode/
+.idea/
+*.log
+tests/
+.phpunit.result.cache
+README.md
